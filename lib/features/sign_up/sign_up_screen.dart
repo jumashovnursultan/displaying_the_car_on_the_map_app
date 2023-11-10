@@ -8,7 +8,7 @@ class SignUpScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final fullNameController = useTextEditingController();
-    final phoneNumberController = useTextEditingController();
+    final phoneNumberController = useTextEditingController(text: '+996');
     final passwordController = useTextEditingController();
 
     return Scaffold(
@@ -24,6 +24,8 @@ class SignUpScreen extends HookConsumerWidget {
               decoration: const InputDecoration(
                 labelText: 'ФИО',
               ),
+              textCapitalization: TextCapitalization.words,
+              textInputAction: TextInputAction.next,
             ),
             TextField(
               controller: phoneNumberController,

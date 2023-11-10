@@ -111,47 +111,16 @@ class _MapScreenState extends State<MapScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Карта'),
-        actions: [
-          Row(
-            children: [
-              IconButton(
-                onPressed: () {
-                  isOnLocation = !isOnLocation;
-                  setState(() {});
-                  LocalStorage().lastLocation = null;
-                  if (isOnLocation) {
-                    LocalStorage().locationTrackingEnabled = true;
-                    startLocationService();
-                  } else {
-                    LocalStorage().locationTrackingEnabled = false;
-                    BackgroundLocator.unRegisterLocationUpdate();
-                  }
-                },
-                icon: const Icon(Icons.ios_share),
-              ),
-              const SizedBox(width: 5),
-              Container(
-                height: 25,
-                width: 25,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: isOnLocation ? Colors.green : Colors.grey,
-                ),
-              ),
-              const SizedBox(width: 10),
-            ],
-          ),
-        ],
       ),
       body: GoogleMap(
-        // mapType: MapType.normal,
-        // mapToolbarEnabled: false,
-        // myLocationButtonEnabled: false,
-        // padding: const EdgeInsets.only(bottom: 300, top: 50),
+        mapType: MapType.normal,
+        mapToolbarEnabled: false,
+        myLocationButtonEnabled: false,
+        padding: const EdgeInsets.only(bottom: 300, top: 50),
         initialCameraPosition: initialCameraPosition,
         // polygons: polygons,
         // markers: markers.toSet(),
-        // myLocationEnabled: true,
+        myLocationEnabled: true,
         onMapCreated: (controller) {
           // _controller.complete(controller);
         },
