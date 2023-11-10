@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nursultan_app/data/storage/local_storage.dart';
 import 'package:nursultan_app/features/bottom_navigation_bar/bottom_navigation_bar_view.dart';
 import 'package:nursultan_app/features/sign_in/sign_in_screen.dart';
@@ -8,8 +9,9 @@ void main() async {
   await LocalStorage.init();
   //// register repositories
   // registerDependencies();
-
-  runApp(const MyApp());
+  runApp(const ProviderScope(
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

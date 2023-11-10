@@ -19,89 +19,89 @@ class MapScreen extends StatefulHookConsumerWidget {
 }
 
 class _MapScreenState extends ConsumerState<MapScreen> {
-  ReceivePort port = ReceivePort();
-  late bool isOnLocation = LocalStorage().locationTrackingEnabled;
-  bool serviceEnabled = true;
-  Location location = Location();
-  LocationData? _locationData;
+  // ReceivePort port = ReceivePort();
+  // late bool isOnLocation = LocalStorage().locationTrackingEnabled;
+  // bool serviceEnabled = true;
+  // Location location = Location();
+  // LocationData? _locationData;
 
-  Future<void> getLocation() async {
-    serviceEnabled = await location.serviceEnabled();
-    // if (!_serviceEnabled) _serviceEnabled = await location.requestService();
-    // _permissionGranted = await location.hasPermission();
-    // if (_permissionGranted == PermissionStatus.denied) {
-    //   _permissionGranted = await location.requestPermission();
-    // }
+  // Future<void> getLocation() async {
+  //   serviceEnabled = await location.serviceEnabled();
+  //   // if (!_serviceEnabled) _serviceEnabled = await location.requestService();
+  //   // _permissionGranted = await location.hasPermission();
+  //   // if (_permissionGranted == PermissionStatus.denied) {
+  //   //   _permissionGranted = await location.requestPermission();
+  //   // }
 
-    location.onLocationChanged.listen((event) {
-      if (!isOnLocation) return;
+  //   location.onLocationChanged.listen((event) {
+  //     if (!isOnLocation) return;
 
-      _locationData = event;
-      setState(() {});
-    });
-  }
+  //     _locationData = event;
+  //     setState(() {});
+  //   });
+  // }
 
-  @override
-  void initState() {
-    getLocation();
+  // @override
+  // void initState() {
+  //   getLocation();
 
-    IsolateNameServer.registerPortWithName(
-      port.sendPort,
-      LocationServiceRepository.isolateName,
-    );
+  //   IsolateNameServer.registerPortWithName(
+  //     port.sendPort,
+  //     LocationServiceRepository.isolateName,
+  //   );
 
-    port.listen(
-      (dynamic data) async {
-        // await updateUI(data);
-      },
-    );
-    initPlatformState();
+  //   port.listen(
+  //     (dynamic data) async {
+  //       // await updateUI(data);
+  //     },
+  //   );
+  //   initPlatformState();
 
-    _checkLocationPermission().then((value) {
-      if (value) {
-        if (LocalStorage().locationTrackingEnabled) {
-          startLocationService();
-        }
-      }
-    });
+  //   _checkLocationPermission().then((value) {
+  //     if (value) {
+  //       if (LocalStorage().locationTrackingEnabled) {
+  //         startLocationService();
+  //       }
+  //     }
+  //   });
 
-    super.initState();
-  }
+  //   super.initState();
+  // }
 
-  Future<void> initPlatformState() async {
-    print('Initializing...');
-    await BackgroundLocator.initialize();
-    print('Initialization done');
+  // Future<void> initPlatformState() async {
+  //   print('Initializing...');
+  //   await BackgroundLocator.initialize();
+  //   print('Initialization done');
 
-    final _isRunning = await BackgroundLocator.isServiceRunning();
-    final isRunning = _isRunning;
+  //   final _isRunning = await BackgroundLocator.isServiceRunning();
+  //   final isRunning = _isRunning;
 
-    print('Running ${isRunning.toString()}');
-  }
+  //   print('Running ${isRunning.toString()}');
+  // }
 
-  Future<bool> _checkLocationPermission() async {
-    final access = await LocationPermissions().checkPermissionStatus();
-    switch (access) {
-      case PermissionStatus.unknown:
-      case PermissionStatus.denied:
-      case PermissionStatus.restricted:
-        final permission = await LocationPermissions().requestPermissions(
-          permissionLevel: LocationPermissionLevel.locationAlways,
-        );
-        if (permission == PermissionStatus.granted) {
-          return true;
-        } else {
-          return false;
-        }
-        break;
-      case PermissionStatus.granted:
-        return true;
-        break;
-      default:
-        return false;
-        break;
-    }
-  }
+  // Future<bool> _checkLocationPermission() async {
+  //   final access = await LocationPermissions().checkPermissionStatus();
+  //   switch (access) {
+  //     case PermissionStatus.unknown:
+  //     case PermissionStatus.denied:
+  //     case PermissionStatus.restricted:
+  //       final permission = await LocationPermissions().requestPermissions(
+  //         permissionLevel: LocationPermissionLevel.locationAlways,
+  //       );
+  //       if (permission == PermissionStatus.granted) {
+  //         return true;
+  //       } else {
+  //         return false;
+  //       }
+  //       break;
+  //     case PermissionStatus.granted:
+  //       return true;
+  //       break;
+  //     default:
+  //       return false;
+  //       break;
+  //   }
+  // }
 
   CameraPosition initialCameraPosition = const CameraPosition(
     target: LatLng(42.866911, 74.639732),
@@ -111,7 +111,26 @@ class _MapScreenState extends ConsumerState<MapScreen> {
   @override
   Widget build(BuildContext context) {
     final taxiDriversState = ref.watch(taxiDriversProvider);
-    // print(taxiDriversState);
+    final List<Marker> markers = drivers.map((e) {
+      return Marker(
+        infoWindow: InfoWindow(
+          title: 'Номер заказа:',
+          snippet: e.raceId.toString(),
+        ),
+        onTap: () {},
+        icon: trackIcon ?? BitmapDescriptor.defaultMarker,
+        markerId: MarkerId('${e.latitude} ${e.longitude}'),
+        position: LatLng(e.latitude, e.longitude),
+      );
+    }).toList();
+
+    if (lastKnownDriverLocation != null) {
+      markers.add(Marker(
+        icon: trackIcon ?? BitmapDescriptor.defaultMarker,
+        markerId: const MarkerId('lastKnownDriverLocation'),
+        position: lastKnownDriverLocation!,
+      ));
+    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Карта'),
