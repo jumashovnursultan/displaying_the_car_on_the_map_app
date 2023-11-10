@@ -141,10 +141,8 @@ class LocationServiceRepository {
           '',
           storage: LocalStorage(),
         ),
-      );
-      // .sentLocation(locationDto.latitude, locationDto.longitude);
-      //////////
-      // print(res.statusCode);
+      ).sendLocation();
+
       print(
           " latitude: ${locationDto.latitude}, longitude: ${locationDto.longitude}");
     }

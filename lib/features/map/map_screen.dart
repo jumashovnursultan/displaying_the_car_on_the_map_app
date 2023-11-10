@@ -3,20 +3,22 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nursultan_app/background_location_service.dart';
 import 'package:nursultan_app/data/storage/local_storage.dart';
 import 'package:background_locator_2/background_locator.dart';
 import 'package:location_permissions/location_permissions.dart';
 import 'package:location/location.dart' hide PermissionStatus;
+import 'package:nursultan_app/features/map/provider/taxi_drivers.dart';
 
-class MapScreen extends StatefulWidget {
+class MapScreen extends StatefulHookConsumerWidget {
   const MapScreen({super.key});
 
   @override
-  State<MapScreen> createState() => _MapScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _MapScreenState();
 }
 
-class _MapScreenState extends State<MapScreen> {
+class _MapScreenState extends ConsumerState<MapScreen> {
   ReceivePort port = ReceivePort();
   late bool isOnLocation = LocalStorage().locationTrackingEnabled;
   bool serviceEnabled = true;
@@ -108,6 +110,8 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final taxiDriversState = ref.watch(taxiDriversProvider);
+    // print(taxiDriversState);
     return Scaffold(
       appBar: AppBar(
         title: const Text('Карта'),

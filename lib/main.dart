@@ -6,6 +6,9 @@ import 'package:nursultan_app/features/sign_in/sign_in_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocalStorage.init();
+  //// register repositories
+  // registerDependencies();
+
   runApp(const MyApp());
 }
 

@@ -1,5 +1,4 @@
-// ignore_for_file: invalid_annotation_target
-
+// ignore: depend_on_referenced_packages
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'taxi_drivers_model.freezed.dart';
@@ -9,9 +8,9 @@ part 'taxi_drivers_model.g.dart';
 class TaxiDriversModel with _$TaxiDriversModel {
   const factory TaxiDriversModel({
     @JsonKey(name: 'latitude') final String? latitude,
-    @JsonKey(name: 'longitude') required final String longitude,
-    @JsonKey(name: 'direction') required final String direction,
-    @JsonKey(name: 'speed') required final DateTime speed,
+    @JsonKey(name: 'longitude') final String? longitude,
+    @JsonKey(name: 'direction') final String? direction,
+    @JsonKey(name: 'speed') final String? speed,
     @JsonKey(name: 'driver') final String? driver,
   }) = _TaxiDriversModel;
 

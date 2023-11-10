@@ -5,9 +5,14 @@ import 'package:nursultan_app/providers/common.dart';
 part 'taxi_drivers.g.dart';
 
 @riverpod
-Future<List<TaxiDriversModel>?> faqs(FaqsRef ref) async {
-  final response = await ref.read(userRepoProvider).faqs();
-  print('faq response: ${response.result}');
+Future<List<TaxiDriversModel>> taxiDrivers(TaxiDriversRef ref) async {
+  final response = await ref.read(userRepoProvider).fetchDrivers();
+  // print('faq response: ${response.result}');
 
-  return response.result ?? [];
+  return response.result ??
+      const [
+        TaxiDriversModel(
+          direction: '',
+        )
+      ];
 }

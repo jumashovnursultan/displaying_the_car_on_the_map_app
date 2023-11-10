@@ -23,11 +23,11 @@ mixin _$TaxiDriversModel {
   @JsonKey(name: 'latitude')
   String? get latitude => throw _privateConstructorUsedError;
   @JsonKey(name: 'longitude')
-  String get longitude => throw _privateConstructorUsedError;
+  String? get longitude => throw _privateConstructorUsedError;
   @JsonKey(name: 'direction')
-  String get direction => throw _privateConstructorUsedError;
+  String? get direction => throw _privateConstructorUsedError;
   @JsonKey(name: 'speed')
-  DateTime get speed => throw _privateConstructorUsedError;
+  String? get speed => throw _privateConstructorUsedError;
   @JsonKey(name: 'driver')
   String? get driver => throw _privateConstructorUsedError;
 
@@ -45,9 +45,9 @@ abstract class $TaxiDriversModelCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'latitude') String? latitude,
-      @JsonKey(name: 'longitude') String longitude,
-      @JsonKey(name: 'direction') String direction,
-      @JsonKey(name: 'speed') DateTime speed,
+      @JsonKey(name: 'longitude') String? longitude,
+      @JsonKey(name: 'direction') String? direction,
+      @JsonKey(name: 'speed') String? speed,
       @JsonKey(name: 'driver') String? driver});
 }
 
@@ -65,9 +65,9 @@ class _$TaxiDriversModelCopyWithImpl<$Res, $Val extends TaxiDriversModel>
   @override
   $Res call({
     Object? latitude = freezed,
-    Object? longitude = null,
-    Object? direction = null,
-    Object? speed = null,
+    Object? longitude = freezed,
+    Object? direction = freezed,
+    Object? speed = freezed,
     Object? driver = freezed,
   }) {
     return _then(_value.copyWith(
@@ -75,18 +75,18 @@ class _$TaxiDriversModelCopyWithImpl<$Res, $Val extends TaxiDriversModel>
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as String?,
-      longitude: null == longitude
+      longitude: freezed == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
-              as String,
-      direction: null == direction
+              as String?,
+      direction: freezed == direction
           ? _value.direction
           : direction // ignore: cast_nullable_to_non_nullable
-              as String,
-      speed: null == speed
+              as String?,
+      speed: freezed == speed
           ? _value.speed
           : speed // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String?,
       driver: freezed == driver
           ? _value.driver
           : driver // ignore: cast_nullable_to_non_nullable
@@ -105,9 +105,9 @@ abstract class _$$TaxiDriversModelImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'latitude') String? latitude,
-      @JsonKey(name: 'longitude') String longitude,
-      @JsonKey(name: 'direction') String direction,
-      @JsonKey(name: 'speed') DateTime speed,
+      @JsonKey(name: 'longitude') String? longitude,
+      @JsonKey(name: 'direction') String? direction,
+      @JsonKey(name: 'speed') String? speed,
       @JsonKey(name: 'driver') String? driver});
 }
 
@@ -123,9 +123,9 @@ class __$$TaxiDriversModelImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? latitude = freezed,
-    Object? longitude = null,
-    Object? direction = null,
-    Object? speed = null,
+    Object? longitude = freezed,
+    Object? direction = freezed,
+    Object? speed = freezed,
     Object? driver = freezed,
   }) {
     return _then(_$TaxiDriversModelImpl(
@@ -133,18 +133,18 @@ class __$$TaxiDriversModelImplCopyWithImpl<$Res>
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as String?,
-      longitude: null == longitude
+      longitude: freezed == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
-              as String,
-      direction: null == direction
+              as String?,
+      direction: freezed == direction
           ? _value.direction
           : direction // ignore: cast_nullable_to_non_nullable
-              as String,
-      speed: null == speed
+              as String?,
+      speed: freezed == speed
           ? _value.speed
           : speed // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String?,
       driver: freezed == driver
           ? _value.driver
           : driver // ignore: cast_nullable_to_non_nullable
@@ -158,9 +158,9 @@ class __$$TaxiDriversModelImplCopyWithImpl<$Res>
 class _$TaxiDriversModelImpl implements _TaxiDriversModel {
   const _$TaxiDriversModelImpl(
       {@JsonKey(name: 'latitude') this.latitude,
-      @JsonKey(name: 'longitude') required this.longitude,
-      @JsonKey(name: 'direction') required this.direction,
-      @JsonKey(name: 'speed') required this.speed,
+      @JsonKey(name: 'longitude') this.longitude,
+      @JsonKey(name: 'direction') this.direction,
+      @JsonKey(name: 'speed') this.speed,
       @JsonKey(name: 'driver') this.driver});
 
   factory _$TaxiDriversModelImpl.fromJson(Map<String, dynamic> json) =>
@@ -171,13 +171,13 @@ class _$TaxiDriversModelImpl implements _TaxiDriversModel {
   final String? latitude;
   @override
   @JsonKey(name: 'longitude')
-  final String longitude;
+  final String? longitude;
   @override
   @JsonKey(name: 'direction')
-  final String direction;
+  final String? direction;
   @override
   @JsonKey(name: 'speed')
-  final DateTime speed;
+  final String? speed;
   @override
   @JsonKey(name: 'driver')
   final String? driver;
@@ -225,9 +225,9 @@ class _$TaxiDriversModelImpl implements _TaxiDriversModel {
 abstract class _TaxiDriversModel implements TaxiDriversModel {
   const factory _TaxiDriversModel(
       {@JsonKey(name: 'latitude') final String? latitude,
-      @JsonKey(name: 'longitude') required final String longitude,
-      @JsonKey(name: 'direction') required final String direction,
-      @JsonKey(name: 'speed') required final DateTime speed,
+      @JsonKey(name: 'longitude') final String? longitude,
+      @JsonKey(name: 'direction') final String? direction,
+      @JsonKey(name: 'speed') final String? speed,
       @JsonKey(name: 'driver') final String? driver}) = _$TaxiDriversModelImpl;
 
   factory _TaxiDriversModel.fromJson(Map<String, dynamic> json) =
@@ -238,13 +238,13 @@ abstract class _TaxiDriversModel implements TaxiDriversModel {
   String? get latitude;
   @override
   @JsonKey(name: 'longitude')
-  String get longitude;
+  String? get longitude;
   @override
   @JsonKey(name: 'direction')
-  String get direction;
+  String? get direction;
   @override
   @JsonKey(name: 'speed')
-  DateTime get speed;
+  String? get speed;
   @override
   @JsonKey(name: 'driver')
   String? get driver;
