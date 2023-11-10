@@ -35,7 +35,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
         <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyChBpUnAb7cW2AUEjlpHsKN3DPa1utR0FU"/> 
+           android:value="AIzaSyBpVjJu-xFRViY5D-ofkt1QM9DVNzyRa1Q"/> 
 
            <service android:name="yukams.app.background_locator_2.IsolateHolderService"
   android:permission="android.permission.FOREGROUND_SERVICE"

@@ -15,7 +15,7 @@ func registerPlugins(registry: FlutterPluginRegistry) -> () {
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-    GMSServices.provideAPIKey("AIzaSyDhG8YcRXdQksxIFKswA3r5PFEuD6xU7L8")
+    GMSServices.provideAPIKey("AIzaSyBpVjJu-xFRViY5D-ofkt1QM9DVNzyRa1Q")
     GeneratedPluginRegistrant.register(with: self)
     BackgroundLocatorPlugin.setPluginRegistrantCallback(registerPlugins)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
