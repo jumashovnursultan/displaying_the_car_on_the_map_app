@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
-   
+   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+   <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+   <uses-permission android:name="android.permission.WAKE_LOCK"/>
+   <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <application
         android:label="nursultan_app"
         android:name="${applicationName}"
@@ -32,6 +35,11 @@
             android:name="flutterEmbedding"
             android:value="2" />
         <meta-data android:name="com.google.android.geo.API_KEY"
-           android:value="AIzaSyChBpUnAb7cW2AUEjlpHsKN3DPa1utR0FU"/>    
+           android:value="AIzaSyChBpUnAb7cW2AUEjlpHsKN3DPa1utR0FU"/> 
+
+           <service android:name="yukams.app.background_locator_2.IsolateHolderService"
+  android:permission="android.permission.FOREGROUND_SERVICE"
+  android:exported="true"
+  android:foregroundServiceType = "location"/>   
     </application>
 </manifest>

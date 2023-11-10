@@ -37,6 +37,22 @@ abstract class LocalStorage {
   }
 
   set token(Token? token) => setObject('token', token?.toMap());
+
+  bool get locationTrackingEnabled =>
+      getBool('location_track_enabled') ?? false;
+  set locationTrackingEnabled(bool val) =>
+      setBool('location_track_enabled', val);
+
+  Map<String, double?>? get lastLocation {
+    final map = getObject('last_location');
+    return map != null ? Map<String, double>.from(map) : null;
+  }
+
+  set lastLocation(Map<String, double?>? location) =>
+      setObject('last_location', location);
+
+  String? get lastData => getString('last_data');
+  set lastData(String? val) => setString('last_data', val ?? '');
 }
 
 class SharedPrefLocalStorageImpl extends LocalStorage {

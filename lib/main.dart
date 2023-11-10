@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nursultan_app/data/storage/local_storage.dart';
 import 'package:nursultan_app/features/bottom_navigation_bar/bottom_navigation_bar_view.dart';
-import 'package:nursultan_app/features/map/map_screen.dart';
 import 'package:nursultan_app/features/sign_in/sign_in_screen.dart';
 
 void main() async {
@@ -18,7 +17,8 @@ class MyApp extends StatelessWidget {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Map App',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
