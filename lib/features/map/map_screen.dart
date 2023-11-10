@@ -2,6 +2,7 @@ import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nursultan_app/background_location_service.dart';
@@ -19,6 +20,23 @@ class MapScreen extends StatefulHookConsumerWidget {
 }
 
 class _MapScreenState extends ConsumerState<MapScreen> {
+  BitmapDescriptor? trackIcon;
+
+  void _addCustomIcon() async {
+    final ByteData byteData = await rootBundle.load('assets/images/car3d.webp');
+    final Uint8List uint8list = byteData.buffer.asUint8List();
+    final iconData =
+        BitmapDescriptor.fromBytes(uint8list, size: const Size(1, 1));
+    setState(() {
+      trackIcon = iconData;
+    });
+  }
+
+  @override
+  void initState() {
+    _addCustomIcon();
+    super.initState();
+  }
   // ReceivePort port = ReceivePort();
   // late bool isOnLocation = LocalStorage().locationTrackingEnabled;
   // bool serviceEnabled = true;
@@ -111,26 +129,19 @@ class _MapScreenState extends ConsumerState<MapScreen> {
   @override
   Widget build(BuildContext context) {
     final taxiDriversState = ref.watch(taxiDriversProvider);
-    final List<Marker> markers = drivers.map((e) {
+    final List<Marker>? markers = taxiDriversState.value?.map((e) {
       return Marker(
         infoWindow: InfoWindow(
-          title: 'Номер заказа:',
-          snippet: e.raceId.toString(),
+          title: 'Номер машины:',
+          snippet: e.driver.toString(),
         ),
         onTap: () {},
         icon: trackIcon ?? BitmapDescriptor.defaultMarker,
         markerId: MarkerId('${e.latitude} ${e.longitude}'),
-        position: LatLng(e.latitude, e.longitude),
+        position: LatLng(double.parse(e.latitude!), double.parse(e.longitude!)),
       );
     }).toList();
 
-    if (lastKnownDriverLocation != null) {
-      markers.add(Marker(
-        icon: trackIcon ?? BitmapDescriptor.defaultMarker,
-        markerId: const MarkerId('lastKnownDriverLocation'),
-        position: lastKnownDriverLocation!,
-      ));
-    }
     return Scaffold(
       appBar: AppBar(
         title: const Text('Карта'),
@@ -142,7 +153,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
         padding: const EdgeInsets.only(bottom: 300, top: 50),
         initialCameraPosition: initialCameraPosition,
         // polygons: polygons,
-        // markers: markers.toSet(),
+        markers: markers?.toSet() ?? <Marker>{},
         myLocationEnabled: true,
         onMapCreated: (controller) {
           // _controller.complete(controller);

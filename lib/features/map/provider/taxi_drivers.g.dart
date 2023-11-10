@@ -6,7 +6,7 @@ part of 'taxi_drivers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$taxiDriversHash() => r'02178e70e9605d86636d0a2baff95a59aee0ba0e';
+String _$taxiDriversHash() => r'4b55ba0817dd63a6531411de6a513dca58e3aa85';
 
 /// See also [taxiDrivers].
 @ProviderFor(taxiDrivers)

@@ -12,7 +12,18 @@ Future<List<TaxiDriversModel>> taxiDrivers(TaxiDriversRef ref) async {
   return response.result ??
       const [
         TaxiDriversModel(
-          direction: '',
-        )
+          latitude: '42.869551',
+          longitude: '74.617684',
+          direction: 'left (направление)',
+          speed: '0.0',
+          driver: 'Водитель 1',
+        ),
+        TaxiDriversModel(
+          latitude: '42.880244',
+          longitude: '74.637940',
+          direction: 'left (направление)',
+          speed: '0.0',
+          driver: 'Водитель 2',
+        ),
       ];
 }
