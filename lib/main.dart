@@ -8,7 +8,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await LocalStorage.init();
   //// register repositories
-  // registerDependencies();
+  registerDependencies();
   runApp(const ProviderScope(
     child: MyApp(),
   ));
