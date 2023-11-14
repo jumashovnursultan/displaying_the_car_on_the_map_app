@@ -1,16 +1,16 @@
-import 'dart:isolate';
-import 'dart:ui';
+// import 'dart:isolate';
+// import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:nursultan_app/background_location_service.dart';
-import 'package:nursultan_app/data/storage/local_storage.dart';
-import 'package:background_locator_2/background_locator.dart';
-import 'package:location_permissions/location_permissions.dart';
-import 'package:location/location.dart' hide PermissionStatus;
-import 'package:nursultan_app/features/map/provider/taxi_drivers.dart';
+// import 'package:nursultan_app/background_location_service.dart';
+// import 'package:nursultan_app/data/storage/local_storage.dart';
+// import 'package:background_locator_2/background_locator.dart';
+// import 'package:location_permissions/location_permissions.dart';
+// import 'package:location/location.dart' hide PermissionStatus;
+import 'package:nursultan_app/providers/taxi_drivers.dart';
 
 class MapScreen extends StatefulHookConsumerWidget {
   const MapScreen({super.key});

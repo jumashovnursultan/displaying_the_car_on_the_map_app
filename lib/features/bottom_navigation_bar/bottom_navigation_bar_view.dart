@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:nursultan_app/features/bottom_navigation_bar/widget/create_driver_alert_dialog.dart';
+import 'package:nursultan_app/features/list_of_cars/list_of_cars_screen.dart';
 import 'package:nursultan_app/features/map/map_screen.dart';
 import 'package:nursultan_app/features/profile/profile_screen.dart';
 
@@ -12,13 +14,21 @@ class BottomNavigationBarView extends HookConsumerWidget {
     final currentIndex = useState(0);
 
     return Scaffold(
-      body: currentIndex.value == 0 ? const MapScreen() : const ProfileScreen(),
+      body: currentIndex.value == 0
+          ? const MapScreen()
+          : const ListOfCarsScreen(),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (value) {
           if (value == 0 && currentIndex.value != 0) {
             currentIndex.value = 0;
           } else if (value == 1 && currentIndex.value != 1) {
+            showDialog(
+              context: context,
+              builder: (context) => const CreateDriverAlertDialog(),
+            );
             currentIndex.value = 1;
+          } else if (value == 2 && currentIndex.value != 2) {
+            currentIndex.value = 2;
           }
         },
         currentIndex: currentIndex.value,
@@ -28,8 +38,12 @@ class BottomNavigationBarView extends HookConsumerWidget {
             label: 'Карта',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Профиль',
+            icon: Icon(Icons.add),
+            label: 'Добавить водителя',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list_alt),
+            label: 'Список машин',
           ),
         ],
       ),

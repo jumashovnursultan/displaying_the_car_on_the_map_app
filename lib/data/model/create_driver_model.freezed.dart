@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'taxi_drivers_model.dart';
+part of 'create_driver_model.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,14 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-TaxiDriversModel _$TaxiDriversModelFromJson(Map<String, dynamic> json) {
-  return _TaxiDriversModel.fromJson(json);
+CreateDriverModel _$CreateDriverModelFromJson(Map<String, dynamic> json) {
+  return _CreateDriverModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$TaxiDriversModel {
+mixin _$CreateDriverModel {
+  @JsonKey(name: 'transmitter_id')
+  String? get transmitterId => throw _privateConstructorUsedError;
   @JsonKey(name: 'latitude')
   String? get latitude => throw _privateConstructorUsedError;
   @JsonKey(name: 'longitude')
@@ -29,32 +31,33 @@ mixin _$TaxiDriversModel {
   @JsonKey(name: 'speed')
   String? get speed => throw _privateConstructorUsedError;
   @JsonKey(name: 'driver')
-  int? get driver => throw _privateConstructorUsedError;
+  String? get driver => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TaxiDriversModelCopyWith<TaxiDriversModel> get copyWith =>
+  $CreateDriverModelCopyWith<CreateDriverModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TaxiDriversModelCopyWith<$Res> {
-  factory $TaxiDriversModelCopyWith(
-          TaxiDriversModel value, $Res Function(TaxiDriversModel) then) =
-      _$TaxiDriversModelCopyWithImpl<$Res, TaxiDriversModel>;
+abstract class $CreateDriverModelCopyWith<$Res> {
+  factory $CreateDriverModelCopyWith(
+          CreateDriverModel value, $Res Function(CreateDriverModel) then) =
+      _$CreateDriverModelCopyWithImpl<$Res, CreateDriverModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'latitude') String? latitude,
+      {@JsonKey(name: 'transmitter_id') String? transmitterId,
+      @JsonKey(name: 'latitude') String? latitude,
       @JsonKey(name: 'longitude') String? longitude,
       @JsonKey(name: 'direction') String? direction,
       @JsonKey(name: 'speed') String? speed,
-      @JsonKey(name: 'driver') int? driver});
+      @JsonKey(name: 'driver') String? driver});
 }
 
 /// @nodoc
-class _$TaxiDriversModelCopyWithImpl<$Res, $Val extends TaxiDriversModel>
-    implements $TaxiDriversModelCopyWith<$Res> {
-  _$TaxiDriversModelCopyWithImpl(this._value, this._then);
+class _$CreateDriverModelCopyWithImpl<$Res, $Val extends CreateDriverModel>
+    implements $CreateDriverModelCopyWith<$Res> {
+  _$CreateDriverModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -64,6 +67,7 @@ class _$TaxiDriversModelCopyWithImpl<$Res, $Val extends TaxiDriversModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? transmitterId = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
     Object? direction = freezed,
@@ -71,6 +75,10 @@ class _$TaxiDriversModelCopyWithImpl<$Res, $Val extends TaxiDriversModel>
     Object? driver = freezed,
   }) {
     return _then(_value.copyWith(
+      transmitterId: freezed == transmitterId
+          ? _value.transmitterId
+          : transmitterId // ignore: cast_nullable_to_non_nullable
+              as String?,
       latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -90,45 +98,51 @@ class _$TaxiDriversModelCopyWithImpl<$Res, $Val extends TaxiDriversModel>
       driver: freezed == driver
           ? _value.driver
           : driver // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$TaxiDriversModelImplCopyWith<$Res>
-    implements $TaxiDriversModelCopyWith<$Res> {
-  factory _$$TaxiDriversModelImplCopyWith(_$TaxiDriversModelImpl value,
-          $Res Function(_$TaxiDriversModelImpl) then) =
-      __$$TaxiDriversModelImplCopyWithImpl<$Res>;
+abstract class _$$CreateDriverModelImplCopyWith<$Res>
+    implements $CreateDriverModelCopyWith<$Res> {
+  factory _$$CreateDriverModelImplCopyWith(_$CreateDriverModelImpl value,
+          $Res Function(_$CreateDriverModelImpl) then) =
+      __$$CreateDriverModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'latitude') String? latitude,
+      {@JsonKey(name: 'transmitter_id') String? transmitterId,
+      @JsonKey(name: 'latitude') String? latitude,
       @JsonKey(name: 'longitude') String? longitude,
       @JsonKey(name: 'direction') String? direction,
       @JsonKey(name: 'speed') String? speed,
-      @JsonKey(name: 'driver') int? driver});
+      @JsonKey(name: 'driver') String? driver});
 }
 
 /// @nodoc
-class __$$TaxiDriversModelImplCopyWithImpl<$Res>
-    extends _$TaxiDriversModelCopyWithImpl<$Res, _$TaxiDriversModelImpl>
-    implements _$$TaxiDriversModelImplCopyWith<$Res> {
-  __$$TaxiDriversModelImplCopyWithImpl(_$TaxiDriversModelImpl _value,
-      $Res Function(_$TaxiDriversModelImpl) _then)
+class __$$CreateDriverModelImplCopyWithImpl<$Res>
+    extends _$CreateDriverModelCopyWithImpl<$Res, _$CreateDriverModelImpl>
+    implements _$$CreateDriverModelImplCopyWith<$Res> {
+  __$$CreateDriverModelImplCopyWithImpl(_$CreateDriverModelImpl _value,
+      $Res Function(_$CreateDriverModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? transmitterId = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
     Object? direction = freezed,
     Object? speed = freezed,
     Object? driver = freezed,
   }) {
-    return _then(_$TaxiDriversModelImpl(
+    return _then(_$CreateDriverModelImpl(
+      transmitterId: freezed == transmitterId
+          ? _value.transmitterId
+          : transmitterId // ignore: cast_nullable_to_non_nullable
+              as String?,
       latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -148,24 +162,28 @@ class __$$TaxiDriversModelImplCopyWithImpl<$Res>
       driver: freezed == driver
           ? _value.driver
           : driver // ignore: cast_nullable_to_non_nullable
-              as int?,
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$TaxiDriversModelImpl implements _TaxiDriversModel {
-  const _$TaxiDriversModelImpl(
-      {@JsonKey(name: 'latitude') this.latitude,
+class _$CreateDriverModelImpl implements _CreateDriverModel {
+  const _$CreateDriverModelImpl(
+      {@JsonKey(name: 'transmitter_id') this.transmitterId,
+      @JsonKey(name: 'latitude') this.latitude,
       @JsonKey(name: 'longitude') this.longitude,
       @JsonKey(name: 'direction') this.direction,
       @JsonKey(name: 'speed') this.speed,
       @JsonKey(name: 'driver') this.driver});
 
-  factory _$TaxiDriversModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TaxiDriversModelImplFromJson(json);
+  factory _$CreateDriverModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$CreateDriverModelImplFromJson(json);
 
+  @override
+  @JsonKey(name: 'transmitter_id')
+  final String? transmitterId;
   @override
   @JsonKey(name: 'latitude')
   final String? latitude;
@@ -180,18 +198,20 @@ class _$TaxiDriversModelImpl implements _TaxiDriversModel {
   final String? speed;
   @override
   @JsonKey(name: 'driver')
-  final int? driver;
+  final String? driver;
 
   @override
   String toString() {
-    return 'TaxiDriversModel(latitude: $latitude, longitude: $longitude, direction: $direction, speed: $speed, driver: $driver)';
+    return 'CreateDriverModel(transmitterId: $transmitterId, latitude: $latitude, longitude: $longitude, direction: $direction, speed: $speed, driver: $driver)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TaxiDriversModelImpl &&
+            other is _$CreateDriverModelImpl &&
+            (identical(other.transmitterId, transmitterId) ||
+                other.transmitterId == transmitterId) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
@@ -204,35 +224,39 @@ class _$TaxiDriversModelImpl implements _TaxiDriversModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, latitude, longitude, direction, speed, driver);
+  int get hashCode => Object.hash(runtimeType, transmitterId, latitude,
+      longitude, direction, speed, driver);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$TaxiDriversModelImplCopyWith<_$TaxiDriversModelImpl> get copyWith =>
-      __$$TaxiDriversModelImplCopyWithImpl<_$TaxiDriversModelImpl>(
+  _$$CreateDriverModelImplCopyWith<_$CreateDriverModelImpl> get copyWith =>
+      __$$CreateDriverModelImplCopyWithImpl<_$CreateDriverModelImpl>(
           this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$TaxiDriversModelImplToJson(
+    return _$$CreateDriverModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _TaxiDriversModel implements TaxiDriversModel {
-  const factory _TaxiDriversModel(
-      {@JsonKey(name: 'latitude') final String? latitude,
+abstract class _CreateDriverModel implements CreateDriverModel {
+  const factory _CreateDriverModel(
+      {@JsonKey(name: 'transmitter_id') final String? transmitterId,
+      @JsonKey(name: 'latitude') final String? latitude,
       @JsonKey(name: 'longitude') final String? longitude,
       @JsonKey(name: 'direction') final String? direction,
       @JsonKey(name: 'speed') final String? speed,
-      @JsonKey(name: 'driver') final int? driver}) = _$TaxiDriversModelImpl;
+      @JsonKey(name: 'driver') final String? driver}) = _$CreateDriverModelImpl;
 
-  factory _TaxiDriversModel.fromJson(Map<String, dynamic> json) =
-      _$TaxiDriversModelImpl.fromJson;
+  factory _CreateDriverModel.fromJson(Map<String, dynamic> json) =
+      _$CreateDriverModelImpl.fromJson;
 
+  @override
+  @JsonKey(name: 'transmitter_id')
+  String? get transmitterId;
   @override
   @JsonKey(name: 'latitude')
   String? get latitude;
@@ -247,9 +271,9 @@ abstract class _TaxiDriversModel implements TaxiDriversModel {
   String? get speed;
   @override
   @JsonKey(name: 'driver')
-  int? get driver;
+  String? get driver;
   @override
   @JsonKey(ignore: true)
-  _$$TaxiDriversModelImplCopyWith<_$TaxiDriversModelImpl> get copyWith =>
+  _$$CreateDriverModelImplCopyWith<_$CreateDriverModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

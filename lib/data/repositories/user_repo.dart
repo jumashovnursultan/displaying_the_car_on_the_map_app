@@ -1,10 +1,12 @@
 import 'package:nursultan_app/data/client/client.dart';
 import 'package:nursultan_app/data/model/api_reponse.dart';
+import 'package:nursultan_app/data/model/create_driver_model.dart';
 import 'package:nursultan_app/data/model/taxi_drivers_model.dart';
 import 'package:nursultan_app/data/model/token.dart';
 
 abstract class UserRepo {
   Future<ApiResponse<Token>> login(String phone, String password);
+  Future<ApiResponse> createDriver(CreateDriverModel model);
   Future<ApiResponse<List<TaxiDriversModel>>> fetchDrivers();
   Future<ApiResponse> sendLocation();
 }
@@ -17,7 +19,7 @@ class UserAPIRepo implements UserRepo {
   @override
   Future<ApiResponse<Token>> login(String phone, String password) {
     return _client.post(
-      '/auth/login/',
+      'auth/login/',
       data: {
         'phone': phone,
         'password': password,
@@ -27,11 +29,19 @@ class UserAPIRepo implements UserRepo {
   }
 
   @override
-  Future<ApiResponse<List<TaxiDriversModel>>> fetchDrivers() {
+  Future<ApiResponse> createDriver(CreateDriverModel model) {
     return _client.post(
-      '/auth/login/',
+      'main_app/item/',
+      data: model.toJson(),
+    );
+  }
+
+  @override
+  Future<ApiResponse<List<TaxiDriversModel>>> fetchDrivers() {
+    return _client.get(
+      'main_app/item/',
       decoder: (data) => List.from(
-        data['results'].map((e) => TaxiDriversModel.fromJson(e)),
+        data.map((e) => TaxiDriversModel.fromJson(e)),
       ),
     );
   }

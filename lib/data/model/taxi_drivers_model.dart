@@ -11,7 +11,7 @@ class TaxiDriversModel with _$TaxiDriversModel {
     @JsonKey(name: 'longitude') final String? longitude,
     @JsonKey(name: 'direction') final String? direction,
     @JsonKey(name: 'speed') final String? speed,
-    @JsonKey(name: 'driver') final String? driver,
+    @JsonKey(name: 'driver') final int? driver,
   }) = _TaxiDriversModel;
 
   factory TaxiDriversModel.fromJson(Map<String, dynamic> json) =>

@@ -46,17 +46,17 @@ class SignInScreen extends HookConsumerWidget {
               },
               child: const Text('Войти'),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  SlideRoute(
-                    screen: const SignUpScreen(),
-                  ),
-                );
-              },
-              child: const Text('Нет аккаунта? Зарегистрироваться'),
-            ),
+            // TextButton(
+            //   onPressed: () {
+            //     Navigator.push(
+            //       context,
+            //       SlideRoute(
+            //         screen: const SignUpScreen(),
+            //       ),
+            //     );
+            //   },
+            //   child: const Text('Нет аккаунта? Зарегистрироваться'),
+            // ),
           ],
         ),
       ),
