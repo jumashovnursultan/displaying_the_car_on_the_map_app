@@ -1,8 +1,11 @@
 // import 'dart:isolate';
 // import 'dart:ui';
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 // import 'package:nursultan_app/background_location_service.dart';
@@ -21,12 +24,14 @@ class MapScreen extends StatefulHookConsumerWidget {
 
 class _MapScreenState extends ConsumerState<MapScreen> {
   BitmapDescriptor? trackIcon;
+  Timer? _timer;
 
   void _addCustomIcon() async {
-    final ByteData byteData = await rootBundle.load('assets/images/car3d.webp');
+    final ByteData byteData =
+        await rootBundle.load('assets/images/yandex_car2.png');
     final Uint8List uint8list = byteData.buffer.asUint8List();
     final iconData =
-        BitmapDescriptor.fromBytes(uint8list, size: const Size(1, 1));
+        BitmapDescriptor.fromBytes(uint8list, size: const Size(25, 25));
     setState(() {
       trackIcon = iconData;
     });
@@ -36,6 +41,13 @@ class _MapScreenState extends ConsumerState<MapScreen> {
   void initState() {
     _addCustomIcon();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+
+    super.dispose();
   }
   // ReceivePort port = ReceivePort();
   // late bool isOnLocation = LocalStorage().locationTrackingEnabled;
@@ -128,9 +140,18 @@ class _MapScreenState extends ConsumerState<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    useEffect(() {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+        _timer = Timer.periodic(const Duration(seconds: 10), (timer) async {
+          ref.refresh(taxiDriversProvider);
+        });
+      });
+    }, const []);
+
     final taxiDriversState = ref.watch(taxiDriversProvider);
     final List<Marker>? markers = taxiDriversState.value?.map((e) {
       return Marker(
+        rotation: double.parse(e.direction ?? '0'),
         infoWindow: InfoWindow(
           title: 'Номер машины:',
           snippet: e.driver.toString(),

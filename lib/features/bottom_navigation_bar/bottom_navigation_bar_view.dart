@@ -4,7 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nursultan_app/features/bottom_navigation_bar/widget/create_driver_alert_dialog.dart';
 import 'package:nursultan_app/features/list_of_cars/list_of_cars_screen.dart';
 import 'package:nursultan_app/features/map/map_screen.dart';
-import 'package:nursultan_app/features/profile/profile_screen.dart';
 
 class BottomNavigationBarView extends HookConsumerWidget {
   const BottomNavigationBarView({super.key});
