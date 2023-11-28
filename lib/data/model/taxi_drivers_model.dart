@@ -7,6 +7,8 @@ part 'taxi_drivers_model.g.dart';
 @freezed
 class TaxiDriversModel with _$TaxiDriversModel {
   const factory TaxiDriversModel({
+    @JsonKey(name: 'id') final int? id,
+    @JsonKey(name: 'transmitter_id') final String? transmitterId,
     @JsonKey(name: 'latitude') final String? latitude,
     @JsonKey(name: 'longitude') final String? longitude,
     @JsonKey(name: 'direction') final String? direction,

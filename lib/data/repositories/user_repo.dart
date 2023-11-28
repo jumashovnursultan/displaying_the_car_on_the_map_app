@@ -6,7 +6,7 @@ import 'package:nursultan_app/data/model/token.dart';
 
 abstract class UserRepo {
   Future<ApiResponse<Token>> login(String phone, String password);
-  Future<ApiResponse> createDriver(CreateDriverModel model);
+  Future<ApiResponse> updateDriver(DriverModel model);
   Future<ApiResponse<List<TaxiDriversModel>>> fetchDrivers();
   Future<ApiResponse> sendLocation();
 }
@@ -29,9 +29,10 @@ class UserAPIRepo implements UserRepo {
   }
 
   @override
-  Future<ApiResponse> createDriver(CreateDriverModel model) {
-    return _client.post(
-      'main_app/item/',
+  Future<ApiResponse> updateDriver(DriverModel model) {
+    print(model.toJson());
+    return _client.put(
+      'main_app/item/${model.id}/',
       data: model.toJson(),
     );
   }

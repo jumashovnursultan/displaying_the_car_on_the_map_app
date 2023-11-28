@@ -22,7 +22,8 @@ class MapScreen extends StatefulHookConsumerWidget {
   ConsumerState<ConsumerStatefulWidget> createState() => _MapScreenState();
 }
 
-class _MapScreenState extends ConsumerState<MapScreen> {
+class _MapScreenState extends ConsumerState<MapScreen>
+    with AutomaticKeepAliveClientMixin<MapScreen> {
   BitmapDescriptor? trackIcon;
   Timer? _timer;
 
@@ -182,4 +183,7 @@ class _MapScreenState extends ConsumerState<MapScreen> {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

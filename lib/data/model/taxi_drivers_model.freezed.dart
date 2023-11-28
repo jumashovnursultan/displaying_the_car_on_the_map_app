@@ -20,6 +20,10 @@ TaxiDriversModel _$TaxiDriversModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TaxiDriversModel {
+  @JsonKey(name: 'id')
+  int? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'transmitter_id')
+  String? get transmitterId => throw _privateConstructorUsedError;
   @JsonKey(name: 'latitude')
   String? get latitude => throw _privateConstructorUsedError;
   @JsonKey(name: 'longitude')
@@ -44,7 +48,9 @@ abstract class $TaxiDriversModelCopyWith<$Res> {
       _$TaxiDriversModelCopyWithImpl<$Res, TaxiDriversModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'latitude') String? latitude,
+      {@JsonKey(name: 'id') int? id,
+      @JsonKey(name: 'transmitter_id') String? transmitterId,
+      @JsonKey(name: 'latitude') String? latitude,
       @JsonKey(name: 'longitude') String? longitude,
       @JsonKey(name: 'direction') String? direction,
       @JsonKey(name: 'speed') String? speed,
@@ -64,6 +70,8 @@ class _$TaxiDriversModelCopyWithImpl<$Res, $Val extends TaxiDriversModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
+    Object? transmitterId = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
     Object? direction = freezed,
@@ -71,6 +79,14 @@ class _$TaxiDriversModelCopyWithImpl<$Res, $Val extends TaxiDriversModel>
     Object? driver = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      transmitterId: freezed == transmitterId
+          ? _value.transmitterId
+          : transmitterId // ignore: cast_nullable_to_non_nullable
+              as String?,
       latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -104,7 +120,9 @@ abstract class _$$TaxiDriversModelImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'latitude') String? latitude,
+      {@JsonKey(name: 'id') int? id,
+      @JsonKey(name: 'transmitter_id') String? transmitterId,
+      @JsonKey(name: 'latitude') String? latitude,
       @JsonKey(name: 'longitude') String? longitude,
       @JsonKey(name: 'direction') String? direction,
       @JsonKey(name: 'speed') String? speed,
@@ -122,6 +140,8 @@ class __$$TaxiDriversModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
+    Object? transmitterId = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
     Object? direction = freezed,
@@ -129,6 +149,14 @@ class __$$TaxiDriversModelImplCopyWithImpl<$Res>
     Object? driver = freezed,
   }) {
     return _then(_$TaxiDriversModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      transmitterId: freezed == transmitterId
+          ? _value.transmitterId
+          : transmitterId // ignore: cast_nullable_to_non_nullable
+              as String?,
       latitude: freezed == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
@@ -157,7 +185,9 @@ class __$$TaxiDriversModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TaxiDriversModelImpl implements _TaxiDriversModel {
   const _$TaxiDriversModelImpl(
-      {@JsonKey(name: 'latitude') this.latitude,
+      {@JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'transmitter_id') this.transmitterId,
+      @JsonKey(name: 'latitude') this.latitude,
       @JsonKey(name: 'longitude') this.longitude,
       @JsonKey(name: 'direction') this.direction,
       @JsonKey(name: 'speed') this.speed,
@@ -166,6 +196,12 @@ class _$TaxiDriversModelImpl implements _TaxiDriversModel {
   factory _$TaxiDriversModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$TaxiDriversModelImplFromJson(json);
 
+  @override
+  @JsonKey(name: 'id')
+  final int? id;
+  @override
+  @JsonKey(name: 'transmitter_id')
+  final String? transmitterId;
   @override
   @JsonKey(name: 'latitude')
   final String? latitude;
@@ -184,7 +220,7 @@ class _$TaxiDriversModelImpl implements _TaxiDriversModel {
 
   @override
   String toString() {
-    return 'TaxiDriversModel(latitude: $latitude, longitude: $longitude, direction: $direction, speed: $speed, driver: $driver)';
+    return 'TaxiDriversModel(id: $id, transmitterId: $transmitterId, latitude: $latitude, longitude: $longitude, direction: $direction, speed: $speed, driver: $driver)';
   }
 
   @override
@@ -192,6 +228,9 @@ class _$TaxiDriversModelImpl implements _TaxiDriversModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TaxiDriversModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.transmitterId, transmitterId) ||
+                other.transmitterId == transmitterId) &&
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
@@ -204,8 +243,8 @@ class _$TaxiDriversModelImpl implements _TaxiDriversModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, latitude, longitude, direction, speed, driver);
+  int get hashCode => Object.hash(runtimeType, id, transmitterId, latitude,
+      longitude, direction, speed, driver);
 
   @JsonKey(ignore: true)
   @override
@@ -224,7 +263,9 @@ class _$TaxiDriversModelImpl implements _TaxiDriversModel {
 
 abstract class _TaxiDriversModel implements TaxiDriversModel {
   const factory _TaxiDriversModel(
-      {@JsonKey(name: 'latitude') final String? latitude,
+      {@JsonKey(name: 'id') final int? id,
+      @JsonKey(name: 'transmitter_id') final String? transmitterId,
+      @JsonKey(name: 'latitude') final String? latitude,
       @JsonKey(name: 'longitude') final String? longitude,
       @JsonKey(name: 'direction') final String? direction,
       @JsonKey(name: 'speed') final String? speed,
@@ -233,6 +274,12 @@ abstract class _TaxiDriversModel implements TaxiDriversModel {
   factory _TaxiDriversModel.fromJson(Map<String, dynamic> json) =
       _$TaxiDriversModelImpl.fromJson;
 
+  @override
+  @JsonKey(name: 'id')
+  int? get id;
+  @override
+  @JsonKey(name: 'transmitter_id')
+  String? get transmitterId;
   @override
   @JsonKey(name: 'latitude')
   String? get latitude;

@@ -37,8 +37,8 @@ class CreateDriver extends _$CreateDriver {
     return CreateDriverState.initial();
   }
 
-  Future<ApiResponse> createDriver(CreateDriverModel model) async {
-    final response = await ref.read(userRepoProvider).createDriver(model);
+  Future<ApiResponse> updateDriver(DriverModel model) async {
+    final response = await ref.read(userRepoProvider).updateDriver(model);
     print(response.statusCode);
 
     return response;

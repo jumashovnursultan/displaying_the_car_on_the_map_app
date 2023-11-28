@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nursultan_app/features/bottom_navigation_bar/bottom_navigation_bar_view.dart';
-import 'package:nursultan_app/features/sign_up/sign_up_screen.dart';
+import 'package:nursultan_app/features/sign_in/logic/sign_in_provider.dart';
 import 'package:nursultan_app/utils/slide_right_route.dart';
 
 class SignInScreen extends HookConsumerWidget {
@@ -12,6 +12,24 @@ class SignInScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final phoneNumberController = useTextEditingController();
     final passwordController = useTextEditingController();
+
+    ref.listen(
+      signInProvider,
+      (state, previous) {
+        if (state is AsyncData) {
+          print('isSuccessful');
+          // Navigator.pushReplacement(
+          //   context,
+          //   SlideRoute(
+          //     slideTo: SlideTo.top,
+          //     screen: const BottomNavigationBarView(),
+          //   ),
+          // );
+        } else if (state is AsyncError) {
+          print('error');
+        }
+      },
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -36,6 +54,10 @@ class SignInScreen extends HookConsumerWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
+                ref.read(signInProvider.notifier).signIn(
+                      phoneNumberController.text,
+                      passwordController.text,
+                    );
                 Navigator.pushReplacement(
                   context,
                   SlideRoute(

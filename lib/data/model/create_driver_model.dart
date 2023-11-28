@@ -5,8 +5,9 @@ part 'create_driver_model.freezed.dart';
 part 'create_driver_model.g.dart';
 
 @freezed
-class CreateDriverModel with _$CreateDriverModel {
-  const factory CreateDriverModel({
+class DriverModel with _$DriverModel {
+  const factory DriverModel({
+    @JsonKey(name: 'id') final int? id,
     @JsonKey(name: 'transmitter_id') final String? transmitterId,
     @JsonKey(name: 'latitude') final String? latitude,
     @JsonKey(name: 'longitude') final String? longitude,
@@ -15,6 +16,6 @@ class CreateDriverModel with _$CreateDriverModel {
     @JsonKey(name: 'driver') final String? driver,
   }) = _CreateDriverModel;
 
-  factory CreateDriverModel.fromJson(Map<String, dynamic> json) =>
-      _$CreateDriverModelFromJson(json);
+  factory DriverModel.fromJson(Map<String, dynamic> json) =>
+      _$DriverModelFromJson(json);
 }

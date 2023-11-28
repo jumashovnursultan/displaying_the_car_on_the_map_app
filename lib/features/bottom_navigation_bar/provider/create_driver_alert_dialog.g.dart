@@ -6,7 +6,7 @@ part of 'create_driver_alert_dialog.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$createDriverHash() => r'4d37b6438141975a2959efae55194ed953849d5e';
+String _$createDriverHash() => r'fedcf9d6db0cacd8852091012d2bcb33a6df812e';
 
 /// See also [CreateDriver].
 @ProviderFor(CreateDriver)

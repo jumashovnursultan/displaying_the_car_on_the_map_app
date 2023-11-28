@@ -2,27 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:nursultan_app/data/model/create_driver_model.dart';
+import 'package:nursultan_app/data/model/taxi_drivers_model.dart';
 import 'package:nursultan_app/features/bottom_navigation_bar/provider/create_driver_alert_dialog.dart';
 
 class CreateDriverAlertDialog extends HookConsumerWidget {
   const CreateDriverAlertDialog({
     super.key,
+    required this.model,
   });
+
+  final TaxiDriversModel model;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final idController = useTextEditingController();
-    final latitudeController = useTextEditingController();
-    final longitudeController = useTextEditingController();
-    final directionController = useTextEditingController();
-    final speedController = useTextEditingController();
-    final driverController = useTextEditingController();
+    final transmitterIdController =
+        useTextEditingController(text: model.transmitterId);
+    final latitudeController = useTextEditingController(text: model.latitude);
+    final longitudeController = useTextEditingController(text: model.longitude);
+    final directionController = useTextEditingController(text: model.direction);
+    final speedController = useTextEditingController(text: model.speed);
+    final driverController =
+        useTextEditingController(text: model.driver?.toString());
 
     final isLoading = useState(false);
 
     return AlertDialog(
       icon: const Text(
-        'Добавить водителя',
+        'Изменить данные',
         style: TextStyle(
           fontSize: 16,
         ),
@@ -41,7 +47,7 @@ class CreateDriverAlertDialog extends HookConsumerWidget {
           const EdgeInsets.only(left: 20, right: 20, bottom: 60, top: 20),
       actions: [
         TextField(
-          controller: idController,
+          controller: transmitterIdController,
           decoration: const InputDecoration(
             labelText: 'ID передатчика',
           ),
@@ -105,9 +111,10 @@ class CreateDriverAlertDialog extends HookConsumerWidget {
             if (isLoading.value) return;
             isLoading.value = true;
             final response =
-                await ref.read(createDriverProvider.notifier).createDriver(
-                      CreateDriverModel(
-                        transmitterId: idController.text,
+                await ref.read(createDriverProvider.notifier).updateDriver(
+                      DriverModel(
+                        id: model.id,
+                        transmitterId: transmitterIdController.text,
                         latitude: latitudeController.text,
                         longitude: longitudeController.text,
                         direction: directionController.text,
@@ -122,7 +129,8 @@ class CreateDriverAlertDialog extends HookConsumerWidget {
               Navigator.pop(context);
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(response.message.toString()),
+                  content: Text(
+                      "${response.message.toString()} - ${response.statusCode}"),
                 ),
               );
             }
@@ -145,7 +153,7 @@ class CreateDriverAlertDialog extends HookConsumerWidget {
                 const Padding(
                   padding: EdgeInsets.only(left: 15, right: 15),
                   child: Text(
-                    'Добавить',
+                    'Изменить',
                   ),
                 ),
             ],

@@ -9,6 +9,7 @@ part of 'create_driver_model.dart';
 _$CreateDriverModelImpl _$$CreateDriverModelImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateDriverModelImpl(
+      id: json['id'] as int?,
       transmitterId: json['transmitter_id'] as String?,
       latitude: json['latitude'] as String?,
       longitude: json['longitude'] as String?,
@@ -20,6 +21,7 @@ _$CreateDriverModelImpl _$$CreateDriverModelImplFromJson(
 Map<String, dynamic> _$$CreateDriverModelImplToJson(
         _$CreateDriverModelImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
       'transmitter_id': instance.transmitterId,
       'latitude': instance.latitude,
       'longitude': instance.longitude,

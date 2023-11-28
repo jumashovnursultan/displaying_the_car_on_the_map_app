@@ -14,12 +14,14 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-CreateDriverModel _$CreateDriverModelFromJson(Map<String, dynamic> json) {
+DriverModel _$DriverModelFromJson(Map<String, dynamic> json) {
   return _CreateDriverModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$CreateDriverModel {
+mixin _$DriverModel {
+  @JsonKey(name: 'id')
+  int? get id => throw _privateConstructorUsedError;
   @JsonKey(name: 'transmitter_id')
   String? get transmitterId => throw _privateConstructorUsedError;
   @JsonKey(name: 'latitude')
@@ -35,18 +37,19 @@ mixin _$CreateDriverModel {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $CreateDriverModelCopyWith<CreateDriverModel> get copyWith =>
+  $DriverModelCopyWith<DriverModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CreateDriverModelCopyWith<$Res> {
-  factory $CreateDriverModelCopyWith(
-          CreateDriverModel value, $Res Function(CreateDriverModel) then) =
-      _$CreateDriverModelCopyWithImpl<$Res, CreateDriverModel>;
+abstract class $DriverModelCopyWith<$Res> {
+  factory $DriverModelCopyWith(
+          DriverModel value, $Res Function(DriverModel) then) =
+      _$DriverModelCopyWithImpl<$Res, DriverModel>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'transmitter_id') String? transmitterId,
+      {@JsonKey(name: 'id') int? id,
+      @JsonKey(name: 'transmitter_id') String? transmitterId,
       @JsonKey(name: 'latitude') String? latitude,
       @JsonKey(name: 'longitude') String? longitude,
       @JsonKey(name: 'direction') String? direction,
@@ -55,9 +58,9 @@ abstract class $CreateDriverModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CreateDriverModelCopyWithImpl<$Res, $Val extends CreateDriverModel>
-    implements $CreateDriverModelCopyWith<$Res> {
-  _$CreateDriverModelCopyWithImpl(this._value, this._then);
+class _$DriverModelCopyWithImpl<$Res, $Val extends DriverModel>
+    implements $DriverModelCopyWith<$Res> {
+  _$DriverModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -67,6 +70,7 @@ class _$CreateDriverModelCopyWithImpl<$Res, $Val extends CreateDriverModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? transmitterId = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
@@ -75,6 +79,10 @@ class _$CreateDriverModelCopyWithImpl<$Res, $Val extends CreateDriverModel>
     Object? driver = freezed,
   }) {
     return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       transmitterId: freezed == transmitterId
           ? _value.transmitterId
           : transmitterId // ignore: cast_nullable_to_non_nullable
@@ -105,14 +113,15 @@ class _$CreateDriverModelCopyWithImpl<$Res, $Val extends CreateDriverModel>
 
 /// @nodoc
 abstract class _$$CreateDriverModelImplCopyWith<$Res>
-    implements $CreateDriverModelCopyWith<$Res> {
+    implements $DriverModelCopyWith<$Res> {
   factory _$$CreateDriverModelImplCopyWith(_$CreateDriverModelImpl value,
           $Res Function(_$CreateDriverModelImpl) then) =
       __$$CreateDriverModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'transmitter_id') String? transmitterId,
+      {@JsonKey(name: 'id') int? id,
+      @JsonKey(name: 'transmitter_id') String? transmitterId,
       @JsonKey(name: 'latitude') String? latitude,
       @JsonKey(name: 'longitude') String? longitude,
       @JsonKey(name: 'direction') String? direction,
@@ -122,7 +131,7 @@ abstract class _$$CreateDriverModelImplCopyWith<$Res>
 
 /// @nodoc
 class __$$CreateDriverModelImplCopyWithImpl<$Res>
-    extends _$CreateDriverModelCopyWithImpl<$Res, _$CreateDriverModelImpl>
+    extends _$DriverModelCopyWithImpl<$Res, _$CreateDriverModelImpl>
     implements _$$CreateDriverModelImplCopyWith<$Res> {
   __$$CreateDriverModelImplCopyWithImpl(_$CreateDriverModelImpl _value,
       $Res Function(_$CreateDriverModelImpl) _then)
@@ -131,6 +140,7 @@ class __$$CreateDriverModelImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = freezed,
     Object? transmitterId = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
@@ -139,6 +149,10 @@ class __$$CreateDriverModelImplCopyWithImpl<$Res>
     Object? driver = freezed,
   }) {
     return _then(_$CreateDriverModelImpl(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
       transmitterId: freezed == transmitterId
           ? _value.transmitterId
           : transmitterId // ignore: cast_nullable_to_non_nullable
@@ -171,7 +185,8 @@ class __$$CreateDriverModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$CreateDriverModelImpl implements _CreateDriverModel {
   const _$CreateDriverModelImpl(
-      {@JsonKey(name: 'transmitter_id') this.transmitterId,
+      {@JsonKey(name: 'id') this.id,
+      @JsonKey(name: 'transmitter_id') this.transmitterId,
       @JsonKey(name: 'latitude') this.latitude,
       @JsonKey(name: 'longitude') this.longitude,
       @JsonKey(name: 'direction') this.direction,
@@ -181,6 +196,9 @@ class _$CreateDriverModelImpl implements _CreateDriverModel {
   factory _$CreateDriverModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$CreateDriverModelImplFromJson(json);
 
+  @override
+  @JsonKey(name: 'id')
+  final int? id;
   @override
   @JsonKey(name: 'transmitter_id')
   final String? transmitterId;
@@ -202,7 +220,7 @@ class _$CreateDriverModelImpl implements _CreateDriverModel {
 
   @override
   String toString() {
-    return 'CreateDriverModel(transmitterId: $transmitterId, latitude: $latitude, longitude: $longitude, direction: $direction, speed: $speed, driver: $driver)';
+    return 'DriverModel(id: $id, transmitterId: $transmitterId, latitude: $latitude, longitude: $longitude, direction: $direction, speed: $speed, driver: $driver)';
   }
 
   @override
@@ -210,6 +228,7 @@ class _$CreateDriverModelImpl implements _CreateDriverModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateDriverModelImpl &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.transmitterId, transmitterId) ||
                 other.transmitterId == transmitterId) &&
             (identical(other.latitude, latitude) ||
@@ -224,7 +243,7 @@ class _$CreateDriverModelImpl implements _CreateDriverModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, transmitterId, latitude,
+  int get hashCode => Object.hash(runtimeType, id, transmitterId, latitude,
       longitude, direction, speed, driver);
 
   @JsonKey(ignore: true)
@@ -242,9 +261,10 @@ class _$CreateDriverModelImpl implements _CreateDriverModel {
   }
 }
 
-abstract class _CreateDriverModel implements CreateDriverModel {
+abstract class _CreateDriverModel implements DriverModel {
   const factory _CreateDriverModel(
-      {@JsonKey(name: 'transmitter_id') final String? transmitterId,
+      {@JsonKey(name: 'id') final int? id,
+      @JsonKey(name: 'transmitter_id') final String? transmitterId,
       @JsonKey(name: 'latitude') final String? latitude,
       @JsonKey(name: 'longitude') final String? longitude,
       @JsonKey(name: 'direction') final String? direction,
@@ -254,6 +274,9 @@ abstract class _CreateDriverModel implements CreateDriverModel {
   factory _CreateDriverModel.fromJson(Map<String, dynamic> json) =
       _$CreateDriverModelImpl.fromJson;
 
+  @override
+  @JsonKey(name: 'id')
+  int? get id;
   @override
   @JsonKey(name: 'transmitter_id')
   String? get transmitterId;

@@ -9,6 +9,8 @@ part of 'taxi_drivers_model.dart';
 _$TaxiDriversModelImpl _$$TaxiDriversModelImplFromJson(
         Map<String, dynamic> json) =>
     _$TaxiDriversModelImpl(
+      id: json['id'] as int?,
+      transmitterId: json['transmitter_id'] as String?,
       latitude: json['latitude'] as String?,
       longitude: json['longitude'] as String?,
       direction: json['direction'] as String?,
@@ -19,6 +21,8 @@ _$TaxiDriversModelImpl _$$TaxiDriversModelImplFromJson(
 Map<String, dynamic> _$$TaxiDriversModelImplToJson(
         _$TaxiDriversModelImpl instance) =>
     <String, dynamic>{
+      'id': instance.id,
+      'transmitter_id': instance.transmitterId,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
       'direction': instance.direction,
