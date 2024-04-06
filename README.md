@@ -1,4 +1,4 @@
-# displaying_the_car_on_the_map_app
+# displaying_map
 
 Flutter project.
 
