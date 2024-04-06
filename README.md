@@ -1,6 +1,6 @@
-# nursultan_app
+# displaying_the_car_on_the_map_app
 
-A new Flutter project.
+Flutter project.
 
 ## Getting Started
 
